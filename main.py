@@ -3,11 +3,16 @@ from bs4 import BeautifulSoup
 import pandas as pd
 
 
+
+# Taking Input for Search Query
+
+name = input("Enter Search Query : ")
+
+
+
 # Headers used for preventing Server Error
-
 headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'}
-
-r = requests.get("https://www.amazon.in/s?k=samsung+mobile&crid=2K4C4LAIP0K9O&sprefix=samsu%2Caps%2C192&ref=nb_sb_ss_ts-doa-p_2_5",headers=headers)
+r = requests.get(f"https://www.amazon.in/s?k={name}&crid=2K4C4LAIP0K9O&sprefix=samsu%2Caps%2C192&ref=nb_sb_ss_ts-doa-p_2_5",headers=headers)
 
 soup = BeautifulSoup(r.text,"html.parser")
 
@@ -43,9 +48,6 @@ df = pd.DataFrame.from_dict(data)
 
 df.to_csv("ScrapedData.csv",index=False)
 
-# Link Used :
 
-# https://www.amazon.in/s?k=samsung+mobile&crid=2K4C4LAIP0K9O&sprefix=samsu%2Caps%2C192&ref=nb_sb_ss_ts-doa-p_2_5
-
-# The Data generated in .csv right niw is generated as per
+# The Data generated in .csv right now is generated as per
 # date of 08-10-2023
