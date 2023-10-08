@@ -1,6 +1,5 @@
 
-# WebScraper 
-# (Amazon , Query : Samsung )
+# WebScraper (Amazon)
 
 
 
